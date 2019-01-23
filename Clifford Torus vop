@@ -1,0 +1,25 @@
+// set Run Over to Detail
+
+
+int pointCount = chi("Point_Count");
+int points[];
+float user_u = chf("Ui_Value");
+float user_v = chf("V_Value");
+//float u = chf("U_Value");
+
+
+resize(points, pointCount);
+
+for(int i = 0; i < pointCount; i++)
+{
+    float u = i* user_u;
+    float v = i* user_v;
+    float ux = cos(u+v)/(sqrt(2.0)+cos(v-u));
+    float uy = sin(u+v)/(sqrt(2.0)+cos(v-u));
+    float uz = sin(v-u)/(sqrt(2.0)+cos(v-u));
+    vector curPos = set(ux, uy, uz);
+    int curPointId = addpoint(geoself(), curPos);
+    points[i] = curPointId;
+   
+}
+addprim(geoself(), "polyline", points);
