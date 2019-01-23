@@ -1,0 +1,10 @@
+
+//i@ is in at attribute
+i@id = @ptnum;
+
+f@pscale = rand(i@id);
+
+//chramp creates gui parameter in wrangle node
+f@pscale = chramp('scale_ramp', f@pscale);
+f@pscale = fit(f@pscale, 0, 1, chf('min_scale'), chf('max_scale'));
+
